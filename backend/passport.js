@@ -23,22 +23,6 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-// passport.use(new MicrosoftStrategy({
-//   clientID: MICROSOFT_CLIENT_ID,
-//   clientSecret: MICROSOFT_CLIENT_SECRET,
-//   callbackURL: "/auth/microsoft/callback",
-//   scope: ['openid', 'profile', 'email', 'user.read'] 
-// },
-// function(accessToken, refreshToken, profile, done) {
-//   User.findOrCreate({ userId: profile.id }, function (err, user) {
-//     if (err) {
-//       return done(err);
-//     }
-//     console.log(user);
-//     done(null, user);
-//   });
-// }
-// ));
 
 passport.use(new MicrosoftStrategy({
   clientID: MICROSOFT_CLIENT_ID,
