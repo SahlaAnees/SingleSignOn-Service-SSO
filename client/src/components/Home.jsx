@@ -8,7 +8,6 @@ function Home({user}){
       };
 
     return(
-        
         <div className='home'>
             <div className='navbar'>
                 <span className='logo'><h1>Eyepax</h1></span>

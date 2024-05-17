@@ -40,16 +40,6 @@ router.get(
   })
 );
 
-// router.get("/microsoft", passport.authenticate("microsoft", { scope: ["profile"] }));
-
-// router.get(
-//   "/microsoft/callback",
-//   passport.authenticate("microsoft", {
-//     successRedirect: CLIENT_URL,
-//     failureRedirect: "/login/failed",
-//   })
-// );
-
 router.get('/microsoft',
   passport.authenticate('microsoft', {
     prompt: 'select_account',

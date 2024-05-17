@@ -1,7 +1,7 @@
 const passport = require('passport');
 const dotenv = require('dotenv');
-const GoogleStrategy = require('passport-google-oauth20').Strategy; 
 
+const GoogleStrategy = require('passport-google-oauth20').Strategy; 
 const MicrosoftStrategy = require('passport-microsoft').Strategy;
 
 dotenv.config();
@@ -27,9 +27,8 @@ passport.use(new GoogleStrategy({
 passport.use(new MicrosoftStrategy({
   clientID: MICROSOFT_CLIENT_ID,
   clientSecret: MICROSOFT_CLIENT_SECRET,
-  callbackURL: "/auth/microsoft/callback",
+  callbackURL: "http://localhost:5000/auth/microsoft/callback",
   scope: ['user.read'],
-  tenant: 'common',
   authorizationURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/authorize',
   tokenURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/token',
 },
@@ -40,7 +39,6 @@ function(accessToken, refreshToken, profile, done) {
   });
 }
 ));
-
 
 passport.serializeUser((user, done) => {
     done(null, user);
