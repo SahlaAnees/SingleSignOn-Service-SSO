@@ -21,7 +21,7 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  req.logout(function(err) {
+  req.logout(function (err) {
     if (err) {
       console.error("Logout error:", err);
       return res.status(500).json({ success: false, message: "Logout failed" });
@@ -42,13 +42,22 @@ router.get(
 
 router.get('/microsoft',
   passport.authenticate('microsoft', {
+    scope: ['openid', 'profile', 'email'],
     prompt: 'select_account',
   }));
 
-router.get('/microsoft/callback', 
-  passport.authenticate('microsoft', { failureRedirect: '/login/failed' }),
-  function(req, res) {
-    res.redirect(CLIENT_URL);
-  });
+  router.get(
+    "/microsoft/callback",
+    passport.authenticate("microsoft", {
+      successRedirect: CLIENT_URL,
+      failureRedirect: "/login/failed",
+    })
+  );
+
+// router.get('/microsoft/callback',
+//   passport.authenticate('microsoft', { failureRedirect: '/login/failed' }),
+//   function (req, res) {
+//     res.redirect(CLIENT_URL);
+//   });
 
 module.exports = router;

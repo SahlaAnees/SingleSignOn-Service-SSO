@@ -14,9 +14,11 @@ function Home({user}){
                 {
                     user ? (
                 <ul className='list'>
-                    <li className='listitem'>
-                        <img src={user.photos[0].value} alt='' className='avatar' />
-                    </li>
+                    {user.photos && user.photos.length > 0 && ( 
+                        <li className='listitem'>
+                            <img src={user.photos[0].value} alt='' className='avatar' />
+                        </li>
+                    )}
                     <li className='listitem'>{user.displayName}</li>
                     <li className='listitem' onClick={logout}>Logout</li>
                 </ul>) : (<Link className="link" to="login">Login</Link>)}

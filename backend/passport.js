@@ -28,16 +28,14 @@ passport.use(new MicrosoftStrategy({
   clientID: MICROSOFT_CLIENT_ID,
   clientSecret: MICROSOFT_CLIENT_SECRET,
   callbackURL: "http://localhost:5000/auth/microsoft/callback",
-  scope: ['user.read'],
-  authorizationURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-  tokenURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/token',
+  scope: ['openid', 'profile', 'email']
+  // authorizationURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+  // tokenURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/token',
 },
 function(accessToken, refreshToken, profile, done) {
-  User.findOrCreate({ userId: profile.id }, function (err, user) {
     console.log(profile);
-    return done(err, user);
-  });
-}
+    done(null, profile);
+  }
 ));
 
 passport.serializeUser((user, done) => {
