@@ -92,3 +92,22 @@
     margin-right: 20px;
   }
   
+  @media screen and (max-width: 768px) {
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 20px 530px; 
+      width: 300px;
+      color: gray;
+    }
+    .hrline {
+      flex-grow: 1;
+      border: none;
+      border-top: 1px solid gray; 
+      margin: 0 20px; 
+    }
+    .or {
+      white-space: nowrap; 
+    }
+  }

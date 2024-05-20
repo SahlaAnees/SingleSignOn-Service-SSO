@@ -54,10 +54,4 @@ router.get('/microsoft',
     })
   );
 
-// router.get('/microsoft/callback',
-//   passport.authenticate('microsoft', { failureRedirect: '/login/failed' }),
-//   function (req, res) {
-//     res.redirect(CLIENT_URL);
-//   });
-
 module.exports = router;

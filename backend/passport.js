@@ -23,14 +23,11 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-
 passport.use(new MicrosoftStrategy({
   clientID: MICROSOFT_CLIENT_ID,
   clientSecret: MICROSOFT_CLIENT_SECRET,
   callbackURL: "http://localhost:5000/auth/microsoft/callback",
   scope: ['openid', 'profile', 'email']
-  // authorizationURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-  // tokenURL: 'http://login.microsoftonline.com/common/oauth2/v2.0/token',
 },
 function(accessToken, refreshToken, profile, done) {
     console.log(profile);
